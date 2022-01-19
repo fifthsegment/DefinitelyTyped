@@ -40,6 +40,10 @@ declare module "pathfinding" {
             diagonalMovement?: DiagonalMovement | undefined;
             weight?: number | undefined;
         }
+        
+        interface TraceFinderOptions extends Heuristic {
+            diagonalMovement?: DiagonalMovement | undefined;
+        }
 
         interface IDAStarFinderOptions extends FinderOptions {
             trackRecursion?: boolean | undefined;
@@ -82,6 +86,11 @@ declare module "pathfinding" {
         interface AStarFinder extends Finder {
             new (): AStarFinder;
             new (opt: FinderOptions): AStarFinder;
+        }
+        
+        interface TraceFinder extends Finder {
+            new (): TraceFinder;
+            new (opt: TraceFinderOptions): TraceFinder;
         }
 
         interface BestFirstFinder extends AStarFinder {
@@ -168,6 +177,7 @@ declare module "pathfinding" {
         export var JPFMoveDiagonallyIfNoObstacles: JPFMoveDiagonallyIfNoObstacles;
         export var JPFNeverMoveDiagonally: JPFNeverMoveDiagonally;
         export var JumpPointFinder: JumpPointFinder;
+        export var TraceFinder: TraceFinder;
     }
     export = Pathfinding;
 }
